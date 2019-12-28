@@ -90,12 +90,12 @@ public class MainAplicacionClass {
 
 	static void viewReportDesign() throws Exception {
 		JasperReport jr = JasperCompileManager.compileReport(
-				"C:/Workspace/ZenilProjects/CursoJasper/jasper-curso/src/main/resources/jasper_report_template.jrxml");
+				"C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/jasper_report_template.jrxml");
 		JasperDesignViewer.viewReportDesign(jr);
 	}
 
 	static void compilarUnJRXML() {
-		String sourceFileName = "C:/Workspace/ZenilProjects/CursoJasper/jasper-curso/src/main/resources/jasper_report_template.jrxml";
+		String sourceFileName = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/jasper_report_template.jrxml";
 
 		try {
 			JasperCompileManager.compileReport(sourceFileName);

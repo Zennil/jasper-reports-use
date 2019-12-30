@@ -212,7 +212,7 @@ public class MainAplicacionClass {
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
 
 		params.put("ReportTitle", "Lista de contactos");
-		params.put("Author", "Creado por Zenil");
+		params.put("Author", "Creado por Zennil");
 
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(SOURCE_FILE_NAME_JRXML_WITH_PARAMS);
@@ -236,7 +236,7 @@ public class MainAplicacionClass {
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
 
 		params.put("TituloReporte", "Este es un reporte ordenado con sort");
-		params.put("Autor", "Armando Alonso Zenil");
+		params.put("Autor", "By: Zennil");
 
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(SOURCE_FILE_NAME_JRXML_WITH_SORT);

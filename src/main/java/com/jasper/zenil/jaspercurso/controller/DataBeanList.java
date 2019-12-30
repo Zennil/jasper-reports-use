@@ -1,8 +1,9 @@
-package com.jasper.zenil.jaspercurso;
+package com.jasper.zenil.jaspercurso.controller;
 
 import java.util.ArrayList;
 
-import com.jasper.zenil.jaspercurso.bean.DataBean;
+import com.jasper.zenil.jaspercurso.model.DataBean;
+
 
 public class DataBeanList {
 

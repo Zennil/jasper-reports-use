@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.jasper.zenil.jaspercurso.bean.DataBean;
-import com.jasper.zenil.jaspercurso.DataBeanList;
+import com.jasper.zenil.jaspercurso.controller.DataBeanList;
+import com.jasper.zenil.jaspercurso.model.DataBean;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -49,7 +49,7 @@ public class MainAplicacionClass {
 
 		// printing();
 
-		exporting();
+		// exporting();
 
 		// params();
 
@@ -89,7 +89,7 @@ public class MainAplicacionClass {
 		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
 
 		DataBeanList dataBeanList = new DataBeanList();
-		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		ArrayList<com.jasper.zenil.jaspercurso.model.DataBean> dataList = dataBeanList.getDataBeanList();
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataList);
 
 		Map<String, Object> params = new HashMap<String, Object>();

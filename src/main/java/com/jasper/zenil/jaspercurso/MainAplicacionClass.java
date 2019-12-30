@@ -185,6 +185,7 @@ public class MainAplicacionClass {
 			e.printStackTrace();
 		}
 	}
+
 	static void generaXLSX(String printFileName, String destFileName) throws JRException {
 
 		JRXlsxExporter xlsExporter = new JRXlsxExporter();
@@ -199,6 +200,9 @@ public class MainAplicacionClass {
 		xlsExporter.exportReport();
 	}
 
+	/**
+	 * Ejemplo que demuestra como pasar parametros para llenear un Reporte
+	 */
 	static void params() {
 
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -220,6 +224,9 @@ public class MainAplicacionClass {
 		}
 	}
 
+	/**
+	 * Ejemplo de implementacion del <sortField> en un template
+	 */
 	static void sorting() {
 
 		Map<String, Object> params = new HashMap<String, Object>();

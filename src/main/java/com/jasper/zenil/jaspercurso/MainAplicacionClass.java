@@ -1,5 +1,6 @@
 package com.jasper.zenil.jaspercurso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 import net.sf.jasperreports.view.JasperDesignViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -27,6 +32,8 @@ public class MainAplicacionClass {
 	private static final String SOURCE_FILE_NAME_JRXML = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template.jrxml";
 	private static final String SOURCE_FILE_NAME_JRXML_WITH_PARAMS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_params.jrxml";
 	private static final String SOURCE_FILE_NAME_JRXML_WITH_SORT = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_sort.jrxml";
+
+	private static final String EXPORT_PATH = "src/main/resources/jasper-resources/exports/";
 
 	public static final Logger logger = Logger.getLogger(MainAplicacionClass.class);
 
@@ -92,7 +99,6 @@ public class MainAplicacionClass {
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -116,6 +122,9 @@ public class MainAplicacionClass {
 		}
 	}
 
+	/**
+	 * Ejecuta la funcion de imprimir a partir de un .jrprint
+	 */
 	static void printing() {
 
 		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
@@ -139,6 +148,9 @@ public class MainAplicacionClass {
 		}
 	}
 
+	/**
+	 * Exporta a partir de un .jrprint a: PDF, HTML y XLS
+	 */
 	static void exporting() {
 
 		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
@@ -157,27 +169,40 @@ public class MainAplicacionClass {
 				/**
 				 * 1.- Export to PDF file
 				 */
-				JasperExportManager.exportReportToPdfFile(printFileName, "src/main/resources/jasper-resources/exports/ExportingPDF.pdf");
+				JasperExportManager.exportReportToPdfFile(printFileName, EXPORT_PATH + "ExportingPDF.pdf");
 
 				/**
 				 * 2.- Export to HTML file
 				 */
-				JasperExportManager.exportReportToHtmlFile(printFileName, "src/main/resources/jasper-resources/exports/ExportingHTML.html");
+				JasperExportManager.exportReportToHtmlFile(printFileName, EXPORT_PATH + "ExportingHTML.html");
 
 				/**
 				 * 3.- Export to Excel sheet
 				 */
-				JasperExportManager.exportReportToXmlFile(printFileName, "src/main/resources/jasper-resources/exports/ExportingExcel.xls", true);
+				generaXLSX(printFileName, EXPORT_PATH + "ExportingExcel.xlsx");
 			}
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
+	}
+	static void generaXLSX(String printFileName, String destFileName) throws JRException {
 
+		JRXlsxExporter xlsExporter = new JRXlsxExporter();
+		xlsExporter.setExporterInput(new SimpleExporterInput(printFileName));
+		xlsExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(new File(destFileName)));
+
+		SimpleXlsxReportConfiguration xlsxConfig = new SimpleXlsxReportConfiguration();
+		xlsxConfig.setDetectCellType(true);
+		xlsxConfig.setCollapseRowSpan(false);
+
+		xlsExporter.setConfiguration(xlsxConfig);
+		xlsExporter.exportReport();
 	}
 
 	static void params() {
 
 		Map<String, Object> params = new HashMap<String, Object>();
+
 		DataBeanList dataBeanList = new DataBeanList();
 		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
@@ -193,7 +218,6 @@ public class MainAplicacionClass {
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	static void sorting() {
@@ -215,7 +239,6 @@ public class MainAplicacionClass {
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }

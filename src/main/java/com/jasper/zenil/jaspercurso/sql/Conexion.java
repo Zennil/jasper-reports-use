@@ -1,4 +1,4 @@
-package com.jasper.zenil.jaspercurso;
+package com.jasper.zenil.jaspercurso.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,9 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
-import com.jasper.zenil.jaspercurso.bean.DataBean;
-import com.jasper.zenil.jaspercurso.DataBeanList;
+import com.jasper.zenil.jaspercurso.controller.DataBeanList;
+import com.jasper.zenil.jaspercurso.model.DataBean;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,31 +30,47 @@ import net.sf.jasperreports.view.JasperViewer;
 @SpringBootApplication
 public class MainAplicacionClass {
 
-	private static final String SOURCE_FILE_NAME_JRXML = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template.jrxml";
-	private static final String SOURCE_FILE_NAME_JRXML_WITH_PARAMS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_params.jrxml";
-	private static final String SOURCE_FILE_NAME_JRXML_WITH_SORT = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_sort.jrxml";
-
-	private static final String EXPORT_PATH = "src/main/resources/jasper-resources/exports/";
-
 	public static final Logger logger = Logger.getLogger(MainAplicacionClass.class);
 
 	public static void main(String[] args) throws Exception {
 
-		// viewReportDesign();
+		System.out.print(Constants.MENU);
 
-		// compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
+		Scanner entradaEscaner = new Scanner(System.in);
+		String entradaTeclado = entradaEscaner.nextLine();
 
-		// fillings();
-
-		// viewing();
-
-		// printing();
-
-		exporting();
-
-		// params();
-
-		// sorting();
+		switch (entradaTeclado.toUpperCase()) {
+		case "A":
+			viewReportDesign();
+			break;
+		case "B":
+			compilarUnJRXML(Constants.SOURCE_FILE_NAME_JRXML);
+			break;
+		case "C":
+			fillings();
+			break;
+		case "D":
+			viewing();
+			break;
+		case "E":
+			printing();
+			break;
+		case "F":
+			exporting();
+			break;
+		case "G":
+			params();
+			break;
+		case "H":
+			sorting();
+			break;
+		case "I":
+			expressions();
+			break;
+		default:
+			break;
+		}
+		entradaEscaner.close();
 
 	}
 
@@ -63,7 +80,7 @@ public class MainAplicacionClass {
 	 * @throws Exception
 	 */
 	static void viewReportDesign() throws Exception {
-		JasperDesignViewer.viewReportDesign(SOURCE_FILE_NAME_JRXML, true);
+		JasperDesignViewer.viewReportDesign(Constants.SOURCE_FILE_NAME_JRXML, true);
 	}
 
 	/**
@@ -86,10 +103,10 @@ public class MainAplicacionClass {
 	 */
 	static void fillings() {
 
-		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
+		String source_file_name_jasper = compilarUnJRXML(Constants.SOURCE_FILE_NAME_JRXML);
 
 		DataBeanList dataBeanList = new DataBeanList();
-		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		ArrayList<com.jasper.zenil.jaspercurso.model.DataBean> dataList = dataBeanList.getDataBeanList();
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(dataList);
 
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -102,11 +119,11 @@ public class MainAplicacionClass {
 	}
 
 	/**
-	 * Visualiza un .jrprint
+	 * Visualizar un .jrprint
 	 */
 	static void viewing() {
 
-		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
+		String source_file_name_jasper = compilarUnJRXML(Constants.SOURCE_FILE_NAME_JRXML);
 
 		DataBeanList dataBeanList = new DataBeanList();
 		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
@@ -127,7 +144,7 @@ public class MainAplicacionClass {
 	 */
 	static void printing() {
 
-		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
+		String source_file_name_jasper = compilarUnJRXML(Constants.SOURCE_FILE_NAME_JRXML);
 
 		String printFileName = null;
 
@@ -153,7 +170,7 @@ public class MainAplicacionClass {
 	 */
 	static void exporting() {
 
-		String source_file_name_jasper = compilarUnJRXML(SOURCE_FILE_NAME_JRXML);
+		String source_file_name_jasper = compilarUnJRXML(Constants.SOURCE_FILE_NAME_JRXML);
 
 		String printFileName = null;
 
@@ -169,17 +186,17 @@ public class MainAplicacionClass {
 				/**
 				 * 1.- Export to PDF file
 				 */
-				JasperExportManager.exportReportToPdfFile(printFileName, EXPORT_PATH + "ExportingPDF.pdf");
+				JasperExportManager.exportReportToPdfFile(printFileName, Constants.EXPORT_PATH + "ExportingPDF.pdf");
 
 				/**
 				 * 2.- Export to HTML file
 				 */
-				JasperExportManager.exportReportToHtmlFile(printFileName, EXPORT_PATH + "ExportingHTML.html");
+				JasperExportManager.exportReportToHtmlFile(printFileName, Constants.EXPORT_PATH + "ExportingHTML.html");
 
 				/**
 				 * 3.- Export to Excel sheet
 				 */
-				generaXLSX(printFileName, EXPORT_PATH + "ExportingExcel.xlsx");
+				generaXLSX(printFileName, Constants.EXPORT_PATH + "ExportingExcel.xlsx");
 			}
 		} catch (JRException e) {
 			e.printStackTrace();
@@ -212,10 +229,11 @@ public class MainAplicacionClass {
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
 
 		params.put("ReportTitle", "Lista de contactos");
-		params.put("Author", "Creado por Zenil");
+		params.put("Author", "Creado por Zennil");
 
 		try {
-			JasperReport jasperReport = JasperCompileManager.compileReport(SOURCE_FILE_NAME_JRXML_WITH_PARAMS);
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_WITH_PARAMS);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);
@@ -236,10 +254,37 @@ public class MainAplicacionClass {
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
 
 		params.put("TituloReporte", "Este es un reporte ordenado con sort");
-		params.put("Autor", "Armando Alonso Zenil");
+		params.put("Autor", "By: Zennil");
 
 		try {
-			JasperReport jasperReport = JasperCompileManager.compileReport(SOURCE_FILE_NAME_JRXML_WITH_SORT);
+			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_WITH_SORT);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Ejemplo del uso de expression en el template
+	 */
+	static void expressions() {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		dataList.add(dataBeanList.createDataBean("Barry", ""));
+
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Expresiones");
+		params.put("Author", "Creado por Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);

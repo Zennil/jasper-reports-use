@@ -1,4 +1,4 @@
-package com.jasper.zenil.jaspercurso.bean;
+package com.jasper.zenil.jaspercurso.model;
 
 public class DataBean {
 

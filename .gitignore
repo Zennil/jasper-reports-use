@@ -412,3 +412,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### JasperReport ###
+.jrprint
+.jasper

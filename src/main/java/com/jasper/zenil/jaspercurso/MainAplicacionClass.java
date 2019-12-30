@@ -35,7 +35,7 @@ public class MainAplicacionClass {
 	public static void main(String[] args) throws Exception {
 
 		System.out.print(Constants.MENU);
-		
+
 		Scanner entradaEscaner = new Scanner(System.in);
 		String entradaTeclado = entradaEscaner.nextLine();
 
@@ -63,6 +63,9 @@ public class MainAplicacionClass {
 			break;
 		case "H":
 			sorting();
+			break;
+		case "I":
+			expressions();
 			break;
 		default:
 			break;
@@ -229,7 +232,8 @@ public class MainAplicacionClass {
 		params.put("Author", "Creado por Zennil");
 
 		try {
-			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_WITH_PARAMS);
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_WITH_PARAMS);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);
@@ -254,6 +258,33 @@ public class MainAplicacionClass {
 
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_WITH_SORT);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Ejemplo del uso de expression en el template
+	 */
+	static void expressions() {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		dataList.add(dataBeanList.createDataBean("Barry", ""));
+
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Expresiones");
+		params.put("Author", "Creado por Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);

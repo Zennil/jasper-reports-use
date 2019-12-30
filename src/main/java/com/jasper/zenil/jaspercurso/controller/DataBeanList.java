@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.jasper.zenil.jaspercurso.model.DataBean;
 
-
 public class DataBeanList {
 
     public ArrayList<DataBean> getDataBeanList() {

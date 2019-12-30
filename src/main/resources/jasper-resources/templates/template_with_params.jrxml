@@ -63,7 +63,7 @@
         <band height="23">
 
             <staticText>
-                <reportElement x="0" y="3" width="555" height="15" mode="Opaque" backcolor="#70A9A9" />
+                <reportElement x="0" y="3" width="515" height="15" mode="Opaque" backcolor="#70A9A9" />
 
                 <box>
                     <bottomPen lineWidth="1.0" lineColor="#CCCCCC" />
@@ -102,7 +102,7 @@
     <detail>
         <band height="16">
             <staticText>
-                <reportElement x="0" y="0" width="555" height="14" mode="Opaque" backcolor="#E5ECF9" />
+                <reportElement x="0" y="0" width="515" height="14" mode="Opaque" backcolor="#E5ECF9" />
 
                 <box>
                     <bottomPen lineWidth="0.25" lineColor="#CCCCCC" />

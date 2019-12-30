@@ -414,5 +414,8 @@ build/
 .vscode/
 
 ### JasperReport ###
-.jrprint
-.jasper
+ExportingExcel.xlsx
+ExportingHTML.html
+ExportingPDF.pdf
+jasper_report_template.jasper
+jasper_report_template.jrprint

@@ -9,6 +9,7 @@ public class Constants {
     public static final String SOURCE_FILE_NAME_JRXML_WITH_SORT = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_sort.jrxml";
     public static final String SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_expressions.jrxml";
     public static final String SOURCE_FILE_NAME_JRXML_FOR_VARIABLES = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_variables.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_SECTIONS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_sections.jrxml";
 
     public static final String MENU = "\n\n Elije una opcion: " + "\n\n (A): Ver reporte basado en un diseño (.jrxml)"
             + "\n (B): Generar un .jasper basado en un .jrxml"
@@ -17,5 +18,6 @@ public class Constants {
             + "\n (F): Exporta a partir de un .jrprint a: PDF, HTML y XLS"
             + "\n (G): Ejemplo que demuestra como pasar parametros para llenear un Reporte"
             + "\n (H): Ejemplo de implementacion del <sortField> en un template" + "\n (I): Uso de expresiones"
-            + "\n (J): Uso de Variables\n\n";
+            + "\n (J): Uso de Variables"
+            + "\n (K): Ejemplo de secciones\n\n";
 }

@@ -12,6 +12,7 @@ import com.jasper.zenil.jaspercurso.model.DataBean;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -69,6 +70,9 @@ public class MainAplicacionClass {
 			break;
 		case "J":
 			variables();
+			break;
+		case "K":
+			sections();
 			break;
 		default:
 			break;
@@ -311,6 +315,18 @@ public class MainAplicacionClass {
 			JasperReport jasperReport = JasperCompileManager
 					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_VARIABLES);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void sections() {
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_SECTIONS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);
 		} catch (JRException e) {

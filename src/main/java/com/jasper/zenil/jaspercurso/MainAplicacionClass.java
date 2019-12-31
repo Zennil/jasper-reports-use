@@ -67,6 +67,9 @@ public class MainAplicacionClass {
 		case "I":
 			expressions();
 			break;
+		case "J":
+			variables();
+			break;
 		default:
 			break;
 		}
@@ -285,6 +288,28 @@ public class MainAplicacionClass {
 		try {
 			JasperReport jasperReport = JasperCompileManager
 					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void variables() {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Variables");
+		params.put("Author", "Created by: Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_VARIABLES);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);

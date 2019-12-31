@@ -74,6 +74,9 @@ public class MainAplicacionClass {
 		case "K":
 			sections();
 			break;
+		case "L":
+			groups();
+			break;
 		default:
 			break;
 		}
@@ -327,6 +330,32 @@ public class MainAplicacionClass {
 			JasperReport jasperReport = JasperCompileManager
 					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_SECTIONS);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void groups() {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		dataList.add(dataBeanList.createDataBean("Bukousky", "USA"));
+		dataList.add(dataBeanList.createDataBean("Cloud", "London"));
+		dataList.add(dataBeanList.createDataBean("Tifa", "London"));
+		dataList.add(dataBeanList.createDataBean("Barret", "Tokyo"));
+		dataList.add(dataBeanList.createDataBean("Watson", "London"));
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Groups");
+		params.put("Author", "By Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_GROUPS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);
 		} catch (JRException e) {

@@ -83,6 +83,9 @@ public class MainAplicacionClass {
 		case "N":
 			unicode();
 			break;
+		case "O":
+			styles();
+			break;
 		default:
 			break;
 		}
@@ -393,8 +396,24 @@ public class MainAplicacionClass {
 		}
 	}
 
-	static void styles(){
-		
+	static void styles() {
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Styles");
+		params.put("Author", "Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_STYLES);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

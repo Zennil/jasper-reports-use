@@ -80,6 +80,9 @@ public class MainAplicacionClass {
 		case "M":
 			fonts();
 			break;
+		case "N":
+			unicode();
+			break;
 		default:
 			break;
 		}
@@ -376,6 +379,22 @@ public class MainAplicacionClass {
 			e.printStackTrace();
 		}
 
+	}
+
+	static void unicode() {
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_UNICODE);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void styles(){
+		
 	}
 
 }

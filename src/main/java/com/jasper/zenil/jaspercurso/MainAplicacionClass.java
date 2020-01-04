@@ -12,6 +12,7 @@ import com.jasper.zenil.jaspercurso.model.DataBean;
 import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -66,6 +67,27 @@ public class MainAplicacionClass {
 			break;
 		case "I":
 			expressions();
+			break;
+		case "J":
+			variables();
+			break;
+		case "K":
+			sections();
+			break;
+		case "L":
+			groups();
+			break;
+		case "M":
+			fonts();
+			break;
+		case "N":
+			unicode();
+			break;
+		case "O":
+			styles();
+			break;
+		case "P":
+			scriptlet();
 			break;
 		default:
 			break;
@@ -285,6 +307,131 @@ public class MainAplicacionClass {
 		try {
 			JasperReport jasperReport = JasperCompileManager
 					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void variables() {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Variables");
+		params.put("Author", "Created by: Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_VARIABLES);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void sections() {
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_SECTIONS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void groups() {
+
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		dataList.add(dataBeanList.createDataBean("Bukousky", "USA"));
+		dataList.add(dataBeanList.createDataBean("Cloud", "London"));
+		dataList.add(dataBeanList.createDataBean("Tifa", "London"));
+		dataList.add(dataBeanList.createDataBean("Barret", "Tokyo"));
+		dataList.add(dataBeanList.createDataBean("Watson", "London"));
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Groups");
+		params.put("Author", "By Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_GROUPS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void fonts() {
+		try {
+			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_FONTS);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	static void unicode() {
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_UNICODE);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void styles() {
+		Map<String, Object> params = new HashMap<String, Object>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Styles");
+		params.put("Author", "Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_STYLES);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void scriptlet() {
+		Map<String, Object> params = new HashMap<>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Scriptlets");
+		params.put("Author", "Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_SCRIPTLES);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);

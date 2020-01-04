@@ -1,0 +1,5 @@
+<?xml version = "1.0"?>
+
+<jasperTemplate>
+    <style name="Strong" isBold="true" pdfFontName="Helvetica-Bold" backcolor="lightGray" forecolor="green" />
+</jasperTemplate>

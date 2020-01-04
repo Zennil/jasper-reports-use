@@ -86,6 +86,9 @@ public class MainAplicacionClass {
 		case "O":
 			styles();
 			break;
+		case "P":
+			scriptlet();
+			break;
 		default:
 			break;
 		}
@@ -408,6 +411,27 @@ public class MainAplicacionClass {
 
 		try {
 			JasperReport jasperReport = JasperCompileManager.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_STYLES);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+			JasperViewer viewer = new JasperViewer(jasperPrint);
+			viewer.setVisible(true);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void scriptlet() {
+		Map<String, Object> params = new HashMap<>();
+
+		DataBeanList dataBeanList = new DataBeanList();
+		ArrayList<DataBean> dataList = dataBeanList.getDataBeanList();
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(dataList);
+
+		params.put("ReportTitle", "Scriptlets");
+		params.put("Author", "Zennil");
+
+		try {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport(Constants.SOURCE_FILE_NAME_JRXML_FOR_SCRIPTLES);
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
 			JasperViewer viewer = new JasperViewer(jasperPrint);
 			viewer.setVisible(true);

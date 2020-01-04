@@ -14,6 +14,7 @@ public class Constants {
     public static final String SOURCE_FILE_NAME_JRXML_FOR_FONTS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_fonts.jrxml";
     public static final String SOURCE_FILE_NAME_JRXML_FOR_UNICODE = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_unicode.jrxml";
     public static final String SOURCE_FILE_NAME_JRXML_FOR_STYLES = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_styles.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_SCRIPTLES = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_scriptlets.jrxml";
 
     public static final String MENU = "\n\n Elije una opcion: " + "\n\n (A): Ver reporte basado en un diseño (.jrxml)"
             + "\n (B): Generar un .jasper basado en un .jrxml"
@@ -25,5 +26,6 @@ public class Constants {
             + "\n (J): Uso de Variables" + "\n (K): Ejemplo de secciones" + "\n (L): Ejemplo del uso de Group"
             + "\n (M): Ejemplo de uso de fuentes"
             + "\n (N): Ejemplo del uso de Unicode"
-            + "\n (O): Ejemplo del uso de styles\n\n";
+            + "\n (O): Ejemplo del uso de styles"
+            + "\n (P): Ejemplo del uso de Scriptlet\n\n";
 }

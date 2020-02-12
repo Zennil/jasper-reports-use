@@ -9,7 +9,7 @@ import java.util.Scanner;
 import com.jasper.zenil.jaspercurso.controller.DataBeanList;
 import com.jasper.zenil.jaspercurso.model.DataBean;
 
-import org.apache.log4j.Logger;
+// import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -31,7 +31,7 @@ import net.sf.jasperreports.view.JasperViewer;
 @SpringBootApplication
 public class MainAplicacionClass {
 
-	public static final Logger logger = Logger.getLogger(MainAplicacionClass.class);
+	// public static final Logger logger = Logger.getLogger(MainAplicacionClass.class);
 
 	public static void main(String[] args) throws Exception {
 

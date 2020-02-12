@@ -2,19 +2,21 @@ package com.jasper.zenil.jaspercurso;
 
 public class Constants {
 
+    private static final String SRC_PATH = "src/main/resources/jasper-resources/templates/";
+
     public static final String EXPORT_PATH = "src/main/resources/jasper-resources/exports/";
 
-    public static final String SOURCE_FILE_NAME_JRXML = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_WITH_PARAMS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_params.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_WITH_SORT = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_with_sort.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_expressions.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_VARIABLES = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_variables.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_SECTIONS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_sections.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_GROUPS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_groups.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_FONTS = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_fonts.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_UNICODE = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_unicode.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_STYLES = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_styles.jrxml";
-    public static final String SOURCE_FILE_NAME_JRXML_FOR_SCRIPTLES = "C:/Workspace/ZenilProjects/CursoJasper/JasperCourse/jasper-reports-use/src/main/resources/jasper-resources/templates/template_for_scriptlets.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML = SRC_PATH + "template.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_WITH_PARAMS = SRC_PATH + "template_with_params.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_WITH_SORT = SRC_PATH + "template_with_sort.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_EXPRESSIONS = SRC_PATH + "template_for_expressions.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_VARIABLES = SRC_PATH + "template_for_variables.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_SECTIONS = SRC_PATH + "template_for_sections.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_GROUPS = SRC_PATH + "template_for_groups.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_FONTS = SRC_PATH + "template_for_fonts.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_UNICODE = SRC_PATH + "template_for_unicode.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_STYLES = SRC_PATH + "template_for_styles.jrxml";
+    public static final String SOURCE_FILE_NAME_JRXML_FOR_SCRIPTLES = SRC_PATH + "template_for_scriptlets.jrxml";
 
     public static final String MENU = "\n\n Elije una opcion: " + "\n\n (A): Ver reporte basado en un diseño (.jrxml)"
             + "\n (B): Generar un .jasper basado en un .jrxml"
